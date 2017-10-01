@@ -1,11 +1,156 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head> 
-<body> 
+<h:head>
 
-</body> 
+	<meta charset="utf-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+
+	<title>Macaíba Market</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+	<!-- Custom styles for this template -->
+	<link href="css/scrolling-nav.css" rel="stylesheet" />
+
+</h:head>
+
+<h:body id="page-top">
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+		id="mainNav">
+	<div class="container">
+		<a class="navbar-brand js-scroll-trigger" href="#page-top">Agrotec
+			- 2017</a> <a class="navbar-brand js-scroll-trigger" href="index.xhtml">|
+			Home</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarResponsive" aria-controls="navbarResponsive"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link js-scroll-trigger"
+					href="listar.xhtml">Ver Produtos</a></li>
+				<li class="nav-item"><a class="nav-link js-scroll-trigger"
+					href="#mySection">Cadastrar Produtos</a></li>
+
+			</ul>
+		</div>
+	</div>
+	</nav>
+
+	<header class="bg-primary text-white">
+	<div class="container text-center">
+		<h1>Macaíba Market</h1>
+		<p class="lead">Cadastre aqui seus produtos</p>
+	</div>
+	</header>
+
+	<section id="mySection" class="bg-light">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 mx-auto">
+				<h2>Cadastrar Produtos</h2>
+				<br /> <br />
+
+				<h:form>
+
+					<h:outputText value="Nome do produto:" style="margin-right: 3%" />
+					<br />
+					<p:inputText  size="50" />
+					<br />
+					<br />
+					<h:outputText value="Marca:" style="margin-right: 3%" />
+					<br />
+					<p:inputText size="50" />
+					<br />
+					<br />
+					<h:outputText value="Preço(R$):" style="margin-right: 3%" />
+					<br />
+					<p:inputText  size="10" onkeyup="somenteNumeros(this);" />
+					<br />
+					<br />
+					<h:outputText value="Peso(kg):" style="margin-right: 3%" />
+					<br />
+					<p:inputText  size="10" onkeyup="somenteNumeros(this);" />
+					<br />
+					<br />
+					<h:outputText value="Quantidade em estoque:"
+						style="margin-right: 3%" />
+					<p:spinner  min="0" max="100" size="3"
+						onkeyup="somenteNumeros2(this);" />
+					<br />
+					<br />
+					<hr />
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<h:commandLink  value="Confirmar"
+								styleClass="btn btn-primaryMine" style="margin-right:3%;"/>
+							<h:commandLink action="listar" value="Cancelar"
+								styleClass="btn btn-primary" />
+						</div>
+					</div>
+
+				</h:form>
+
+			</div>
+		</div>
+	</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="py-5 bg-dark">
+	<div class="container">
+		<p class="m-0 text-center text-white">Copyright &copy; Tecnologia
+			em Análise e Desenvolvimento de Sistemas - TADS - UFRN/EAJ</p>
+	</div>
+	<!-- /.container --> </footer>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/popper/popper.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom JavaScript for this theme -->
+	<script src="js/scrolling-nav.js"></script>
+
+	<script>
+			    function somenteNumeros(num) {
+			        var er = /[^0-9.]/;
+			        er.lastIndex = 0;
+			        var campo = num;
+			        if (er.test(campo.value)) {
+			          campo.value = "";
+			        }
+			    }
+ 			</script>
+
+	<script>
+			    function somenteNumeros2(num) {
+			        var er = /[^0-9]/;
+			        er.lastIndex = 0;
+			        var campo = num;
+			        if (er.test(campo.value)) {
+			          campo.value = "";
+			        }
+			    }
+ 			</script>
+
+</h:body>
+
 </html>
+
