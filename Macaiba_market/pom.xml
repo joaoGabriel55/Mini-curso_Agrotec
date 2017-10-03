@@ -43,6 +43,11 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.omnifaces</groupId>
+			<artifactId>omnifaces</artifactId>
+			<version>1.10</version>
+		</dependency>
 
 
 		<!-- JSF e JAVA EE -->

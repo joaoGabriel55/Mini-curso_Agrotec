@@ -2,7 +2,7 @@ package daoImpl;
 
 import model.Produto;
 
-public class ProdutoDAO extends GenericDao<Produto, Integer> {
+public class ProdutoDAO extends GenericDAO<Produto, Integer> {
 	
 	 public ProdutoDAO() { 
 	        super(Produto.class); 

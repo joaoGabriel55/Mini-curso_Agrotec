@@ -12,14 +12,14 @@ import org.hibernate.Transaction;
 
 import util.HibernateUtil;
 
-public class GenericDao<T, ID extends Serializable> { 
+public class GenericDAO<T, ID extends Serializable> { 
 
 	private Class<T> klass; 
 	private Transaction transacao = null;
     private Session sessao = null;
 
-	public GenericDao() {} 
-	public GenericDao(Class<T> klass) {		
+	public GenericDAO() {} 
+	public GenericDAO(Class<T> klass) {		
 		this.klass = klass; 
 	} 
 
