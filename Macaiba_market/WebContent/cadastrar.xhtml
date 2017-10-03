@@ -63,31 +63,31 @@
 				<h2>Cadastrar Produtos</h2>
 				<br /> <br />
 
-				<h:form>
-
-					<h:outputText value="Nome do produto:" style="margin-right: 3%" />
+				<h:form prependId="false" >
+				<p:messages />
+					<h:outputText value="Nome do produto:" style="margin-right: 3%"  />
 					<br />
-					<p:inputText  size="50" />
+					<p:inputText value="#{produtoBean.produto.nome}"  size="50"  />
 					<br />
 					<br />
 					<h:outputText value="Marca:" style="margin-right: 3%" />
 					<br />
-					<p:inputText size="50" />
+					<p:inputText value="#{produtoBean.produto.marca}" size="50" />
 					<br />
 					<br />
 					<h:outputText value="Preço(R$):" style="margin-right: 3%" />
 					<br />
-					<p:inputText  size="10" onkeyup="somenteNumeros(this);" />
+					<p:inputText value="#{produtoBean.produto.preco}" size="10" onkeyup="somenteNumeros(this);" />
 					<br />
 					<br />
 					<h:outputText value="Peso(kg):" style="margin-right: 3%" />
 					<br />
-					<p:inputText  size="10" onkeyup="somenteNumeros(this);" />
+					<p:inputText value="#{produtoBean.produto.peso}" size="10" onkeyup="somenteNumeros(this);" />
 					<br />
 					<br />
 					<h:outputText value="Quantidade em estoque:"
 						style="margin-right: 3%" />
-					<p:spinner  min="0" max="100" size="3"
+					<p:spinner  min="0" max="100" size="3" value="#{produtoBean.produto.quantidade}"
 						onkeyup="somenteNumeros2(this);" />
 					<br />
 					<br />
@@ -95,7 +95,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<h:commandLink  value="Confirmar"
+							<h:commandButton  value="Confirmar" action="#{produtoBean.salvar()}"
 								styleClass="btn btn-primaryMine" style="margin-right:3%;"/>
 							<h:commandLink action="listar" value="Cancelar"
 								styleClass="btn btn-primary" />

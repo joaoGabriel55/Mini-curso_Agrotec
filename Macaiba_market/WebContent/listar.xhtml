@@ -61,32 +61,41 @@
 		<div class="row">
 			<div class="col-lg-8 mx-auto">
 				<h2>Produtos em estoque</h2>
-				<h:form>
-					<p:dataTable var="car" value="#{dtBasicView.cars}">
+				<h:form id="frm">
+				<p:messages />
+					<p:dataTable var="pro" value="#{produtoBean.listap}">
 						<p:column headerText="Id" width="5%">
-							<h:outputText value="#{car.id}" />
+							<h:outputText value="#{pro.produtoId}" />
 						</p:column>
 
 						<p:column headerText="Nome" width="30%">
-							<h:outputText value="#{car.year}" />
+							<h:outputText value="#{pro.nome}" />
 						</p:column>
 
 						<p:column headerText="Marca" width="30%">
-							<h:outputText value="#{car.brand}" />
+							<h:outputText value="#{pro.marca}" />
 						</p:column>
 
 						<p:column headerText="Preço (R$)" width="20%">
-							<h:outputText value="#{car.color}" />
+							<h:outputText value="#{pro.preco}" />
 						</p:column>
 
 						<p:column headerText="Peso (kg)" width="20%">
-							<h:outputText value="#{car.color}" />
+							<h:outputText value="#{pro.peso}" />
 						</p:column>
 
 						<p:column headerText="Qtd." width="10%">
-							<h:outputText value="#{car.color}" />
+							<h:outputText value="#{pro.quantidade}" />
 						</p:column>
-
+						
+						<p:column headerText="Editar" width="17%">
+							<h:commandButton action="#{produtoBean.atualizar(pro)}" value="Editar" update="frm"/>
+						</p:column>
+						
+						<p:column headerText="Excluir" width="25%">
+							<h:commandButton action="#{produtoBean.remover(pro)}" value="Remover" update="frm"/>
+						</p:column>	
+						
 						<f:facet name="footer">
 
 						</f:facet>

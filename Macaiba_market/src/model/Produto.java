@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,14 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="produto")
 public class Produto implements Serializable {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1020950800821773964L;
 
 	@Id
@@ -36,19 +35,14 @@ public class Produto implements Serializable {
 
 	@Column(nullable = false)
 	private Integer quantidade;
-
-	public Produto(String nome, String marca, Double preco, Double peso, Integer quantidade) {
-		super();
-		this.nome = nome;
-		this.marca = marca;
-		this.preco = preco;
-		this.peso = peso;
-		this.quantidade = quantidade;
-	}
+	
+	@Column(name="dataRemocao", nullable=true)
+	@Temporal(TemporalType.DATE)
+	private Date dataRemocao;	
 
 	public Produto() {
 	}
-
+	
 	public Integer getProdutoId() {
 		return produtoId;
 	}
@@ -99,12 +93,28 @@ public class Produto implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}	
+
+	public Date getDataRemocao() {
+		return dataRemocao;
+	}
+
+	public void setDataRemocao(Date dataRemocao) {
+		this.dataRemocao = dataRemocao;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "Produto [produtoId=" + produtoId + ", nome=" + nome + ", marca=" + marca + ", preco=" + preco
+				+ ", peso=" + peso + ", quantidade=" + quantidade + ", dataRemocao=" + dataRemocao + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((dataRemocao == null) ? 0 : dataRemocao.hashCode());
 		result = prime * result + ((marca == null) ? 0 : marca.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((peso == null) ? 0 : peso.hashCode());
@@ -123,6 +133,11 @@ public class Produto implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Produto other = (Produto) obj;
+		if (dataRemocao == null) {
+			if (other.dataRemocao != null)
+				return false;
+		} else if (!dataRemocao.equals(other.dataRemocao))
+			return false;
 		if (marca == null) {
 			if (other.marca != null)
 				return false;
@@ -155,5 +170,4 @@ public class Produto implements Serializable {
 			return false;
 		return true;
 	}
-
 }
