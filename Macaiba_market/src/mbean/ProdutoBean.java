@@ -12,7 +12,7 @@ import org.omnifaces.util.Messages;
 import daoImpl.ProdutoDAO;
 import model.Produto;
 
-@ManagedBean
+@ManagedBean 
 @SessionScoped
 public class ProdutoBean {
 	Produto produto = new Produto();
