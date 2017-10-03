@@ -22,21 +22,59 @@ public class ProdutoBean {
 	 * public ProdutoBean() { this.produto = new Produto(); }
 	 */
 
+	public boolean valida() {
+		if (produto.getNome().isEmpty() || produto.getMarca().isEmpty()
+				|| ((produto.getPeso().equals(null) || produto.getPeso() == 0.0)
+						|| (produto.getPreco().equals(null) || produto.getPreco() == 0.0)
+						|| (produto.getQuantidade().equals(null) || produto.getQuantidade() == 0))) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public String salvar() {
+
+		// Flash scope
+		// faz com que a mensagem de sucesso seja perpetuada apos o
+		// redirecionamento
 
 		try {
 			ProdutoDAO produtoDAO = new ProdutoDAO();
 
-			produtoDAO.save(this.produto);
+			if (produto.getProdutoId() == null) {
 
-			produto = new Produto();
+				if (valida() == true) {
+					FacesContext.getCurrentInstance().addMessage(null,
+							new FacesMessage(FacesMessage.SEVERITY_WARN, "Atenção!", "Preencha todos os campos"));
+					FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+					return "/cadastrar.xhtml?faces-redirect=true";
+				} else {
+					produtoDAO.save(this.produto);
+					produto = new Produto();
+					FacesContext.getCurrentInstance().addMessage(null,
+							new FacesMessage("Cadastro realizado com sucesso!"));
+					FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 
-			// Flash scope
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastro realizado com sucesso!"));
+					return "/listar.xhtml?faces-redirect=true";
+				}
+			} else {
 
-			// Essa parte faz com que a mensagem de sucesso seja perpetuada apos o
-			// redirecionamento
-			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+				if (valida() == true) {
+					FacesContext.getCurrentInstance().addMessage(null,
+							new FacesMessage(FacesMessage.SEVERITY_WARN, "Atenção!", "Preencha todos os campos"));
+					FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+					return "/cadastrar.xhtml?faces-redirect=true";
+				} else {
+					produtoDAO.update(this.produto);
+					produto = new Produto();
+					FacesContext.getCurrentInstance().addMessage(null,
+							new FacesMessage("Edição realizada com sucesso!"));
+					FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+
+					return "/listar.xhtml?faces-redirect=true";
+				}
+			}
 
 		} catch (RuntimeException erro) {
 			Messages.addGlobalError("Erro ao cadastrar");
@@ -45,8 +83,6 @@ public class ProdutoBean {
 			return "/cadastrar.xhtml?faces-redirect=true";
 
 		}
-
-		return "/listar.xhtml?faces-redirect=true";
 
 		/*
 		 * if (listap.contains(produto)) { listap.add(produto); FacesContext fc =
