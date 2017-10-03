@@ -59,49 +59,58 @@
 	<section id="services" class="bg-light">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-8 mx-auto">
+			<div class="col-lg-12 mx-auto">
 				<h2>Produtos em estoque</h2>
+				<br />
 				<h:form id="frm">
-					<p:messages />
-					<p:dataTable var="pro" value="#{produtoBean.listap}"> 
-						<p:column headerText="Id" width="10%" style="text-align:center">
-							<h:outputText value="#{pro.produtoId}" />
-						</p:column>
+					<p:panel>
+						<p:messages />
+						<p:dataTable var="pro" value="#{produtoBean.listap}" emptyMessage="Não há produtos cadastrados, cadastre ae homi!">
+							<p:column headerText="Id" width="12%" style="text-align:center">
+								<h:outputText value="#{pro.produtoId}" />
+							</p:column>
 
-						<p:column headerText="Nome" width="60%">
-							<h:outputText value="#{pro.nome}" />
-						</p:column>
+							<p:column headerText="Nome da Mercadoria" width="80%"
+								style="text-align:left">
+								<h:outputText value="#{pro.nome}" />
+							</p:column>
 
-						<p:column headerText="Marca" width="30%" style="text-align:center">
-							<h:outputText value="#{pro.marca}" />
-						</p:column>
+							<p:column headerText="Marca" width="80%"
+								style="text-align:center">
+								<h:outputText value="#{pro.marca}" />
+							</p:column>
 
-						<p:column headerText="Preço(R$)" width="35%"
-							style="text-align:center">
-							<h:outputText value="#{pro.preco}" />
-						</p:column>
+							<p:column headerText="Preço(R$)" width="50%"
+								style="text-align:center">
+								<h:outputText value="#{pro.preco}" />
+							</p:column>
 
-						<p:column headerText="Peso(kg)" width="35%">
-							<h:outputText value="#{pro.peso}" />
-						</p:column>
+							<p:column headerText="Peso(kg)" width="50%"
+								style="text-align:center">
+								<h:outputText value="#{pro.peso}" />
+							</p:column>
 
-						<p:column headerText="Qtd." width="20%" style="text-align:center">
-							<h:outputText value="#{pro.quantidade}" />
-						</p:column>
+							<p:column headerText="Qtd." width="30%" style="text-align:center">
+								<h:outputText value="#{pro.quantidade}" />
+							</p:column>
 
-						<p:column headerText="Excluir" width="35%"
-							style="text-align:center">
-							<p:commandButton action="#{produtoBean.remover(pro)}" value="X"
-								update="frm" />
-						</p:column>
+							<p:column headerText="Editar" width="25%"
+								style="text-align:center">
+								<p:commandLink action="#{produtoBean.atualizar(pro)}"
+									update="frm">
+									<img src="img/edit.png" />
+								</p:commandLink>
 
-						<p:column headerText="" width="40%" style="text-align:center">
-							<p:commandButton action="#{produtoBean.atualizar(pro)}"
-								update="frm" image="/img/edit.png" />
-						</p:column>
+							</p:column>
 
-					
-					</p:dataTable>
+							<p:column headerText="Excluir" width="25%"
+								style="text-align:center">
+								<p:commandLink action="#{produtoBean.remover(pro)}" update="frm">
+									<img src="img/trash.png" />
+								</p:commandLink>
+							</p:column>
+						</p:dataTable>
+					</p:panel>
 				</h:form>
 
 			</div>

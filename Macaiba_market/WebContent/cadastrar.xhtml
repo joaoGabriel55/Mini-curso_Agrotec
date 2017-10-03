@@ -61,33 +61,38 @@
 		<div class="row">
 			<div class="col-lg-8 mx-auto">
 				<h2>Cadastrar Produtos</h2>
-				<br /> <br />
-
-				<h:form prependId="false" >
-				<p:messages />
-					<h:outputText value="Nome do produto:" style="margin-right: 3%"  />
+				<hr />
+				<h:form prependId="false">
+					<p:messages id="messages" showDetail="true" autoUpdate="true"
+						closable="true" />
+					<h:outputText value="Nome do produto:" style="margin-right: 3%" />
 					<br />
-					<p:inputText value="#{produtoBean.produto.nome}"  size="50"  />
-					<br />
+					<p:inputText id="nome" value="#{produtoBean.produto.nome}"
+						size="50" />
+					<p:message for="nome"></p:message>
 					<br />
 					<h:outputText value="Marca:" style="margin-right: 3%" />
 					<br />
-					<p:inputText value="#{produtoBean.produto.marca}" size="50" />
+					<p:inputText id="marca" value="#{produtoBean.produto.marca}"
+						size="50" />
 					<br />
 					<br />
 					<h:outputText value="Preço(R$):" style="margin-right: 3%" />
 					<br />
-					<p:inputText value="#{produtoBean.produto.preco}" size="10" onkeyup="somenteNumeros(this);" />
+					<p:inputText id="preco" value="#{produtoBean.produto.preco}"
+						size="10" onkeyup="somenteNumeros(this);" />
 					<br />
 					<br />
 					<h:outputText value="Peso(kg):" style="margin-right: 3%" />
 					<br />
-					<p:inputText value="#{produtoBean.produto.peso}" size="10" onkeyup="somenteNumeros(this);" />
+					<p:inputText id="peso" value="#{produtoBean.produto.peso}"
+						size="10" onkeyup="somenteNumeros(this);" />
 					<br />
 					<br />
 					<h:outputText value="Quantidade em estoque:"
 						style="margin-right: 3%" />
-					<p:spinner  min="0" max="100" size="3" value="#{produtoBean.produto.quantidade}"
+					<p:spinner id="qtd" min="0" max="100" size="3"
+						value="#{produtoBean.produto.quantidade}"
 						onkeyup="somenteNumeros2(this);" />
 					<br />
 					<br />
@@ -95,7 +100,8 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<h:commandButton  value="Confirmar" action="#{produtoBean.salvar()}"
+							<h:commandButton value="Confirmar"
+								action="#{produtoBean.salvar()}"
 								styleClass="btn btn-primaryMine" style="margin-right:3%;" />
 							<h:commandLink action="listar" value="Cancelar"
 								styleClass="btn btn-primary" />
