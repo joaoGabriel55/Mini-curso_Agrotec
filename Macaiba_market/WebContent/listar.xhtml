@@ -64,40 +64,40 @@
 				<br />
 				<h:form id="frm">
 					<p:panel>
-						<p:messages />
-						<p:dataTable var="pro" value="#{produtoBean.listap}" emptyMessage="Não há produtos cadastrados, cadastre ae homi!">
+
+						<p:dataTable
+							emptyMessage="Não há produtos cadastrados, cadastre ae homi!">
 							<p:column headerText="Id" width="12%" style="text-align:center">
-								<h:outputText value="#{pro.produtoId}" />
+								<h:outputText />
 							</p:column>
 
 							<p:column headerText="Nome da Mercadoria" width="80%"
 								style="text-align:left">
-								<h:outputText value="#{pro.nome}" />
+								<h:outputText />
 							</p:column>
 
 							<p:column headerText="Marca" width="80%"
 								style="text-align:center">
-								<h:outputText value="#{pro.marca}" />
+								<h:outputText />
 							</p:column>
 
 							<p:column headerText="Preço(R$)" width="50%"
 								style="text-align:center">
-								<h:outputText value="#{pro.preco}" />
+								<h:outputText />
 							</p:column>
 
 							<p:column headerText="Peso(kg)" width="50%"
 								style="text-align:center">
-								<h:outputText value="#{pro.peso}" />
+								<h:outputText />
 							</p:column>
 
 							<p:column headerText="Qtd." width="30%" style="text-align:center">
-								<h:outputText value="#{pro.quantidade}" />
+								<h:outputText />
 							</p:column>
 
 							<p:column headerText="Editar" width="25%"
 								style="text-align:center">
-								<p:commandLink action="#{produtoBean.atualizar(pro)}"
-									update="frm">
+								<p:commandLink update="frm">
 									<img src="img/edit.png" />
 								</p:commandLink>
 
@@ -105,7 +105,7 @@
 
 							<p:column headerText="Excluir" width="25%"
 								style="text-align:center">
-								<p:commandLink action="#{produtoBean.remover(pro)}" update="frm">
+								<p:commandLink update="frm">
 									<img src="img/trash.png" />
 								</p:commandLink>
 							</p:column>
