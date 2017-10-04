@@ -12,32 +12,22 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity
-@Table(name="produto")
-public class Produto implements Serializable {
-	private static final long serialVersionUID = 1020950800821773964L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Produto  {
+
+
 	private Integer produtoId;
 
-	@Column(length=50, nullable = false)
 	private String nome;
 
-	@Column(length=50, nullable = false)
 	private String marca;
 
-	@Column(nullable = false)
 	private Double preco;
 
-	@Column(nullable = false)
 	private Double peso;
 
-	@Column(nullable = false)
 	private Integer quantidade;
 	
-	@Column(name="dataRemocao", nullable=true)
-	@Temporal(TemporalType.DATE)
 	private Date dataRemocao;	
 
 	public Produto() {
@@ -91,9 +81,6 @@ public class Produto implements Serializable {
 		this.quantidade = quantidade;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}	
 
 	public Date getDataRemocao() {
 		return dataRemocao;
@@ -104,70 +91,5 @@ public class Produto implements Serializable {
 	}
 
 	
-	@Override
-	public String toString() {
-		return "Produto [produtoId=" + produtoId + ", nome=" + nome + ", marca=" + marca + ", preco=" + preco
-				+ ", peso=" + peso + ", quantidade=" + quantidade + ", dataRemocao=" + dataRemocao + "]";
-	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((dataRemocao == null) ? 0 : dataRemocao.hashCode());
-		result = prime * result + ((marca == null) ? 0 : marca.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((peso == null) ? 0 : peso.hashCode());
-		result = prime * result + ((preco == null) ? 0 : preco.hashCode());
-		result = prime * result + ((produtoId == null) ? 0 : produtoId.hashCode());
-		result = prime * result + ((quantidade == null) ? 0 : quantidade.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Produto other = (Produto) obj;
-		if (dataRemocao == null) {
-			if (other.dataRemocao != null)
-				return false;
-		} else if (!dataRemocao.equals(other.dataRemocao))
-			return false;
-		if (marca == null) {
-			if (other.marca != null)
-				return false;
-		} else if (!marca.equals(other.marca))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (peso == null) {
-			if (other.peso != null)
-				return false;
-		} else if (!peso.equals(other.peso))
-			return false;
-		if (preco == null) {
-			if (other.preco != null)
-				return false;
-		} else if (!preco.equals(other.preco))
-			return false;
-		if (produtoId == null) {
-			if (other.produtoId != null)
-				return false;
-		} else if (!produtoId.equals(other.produtoId))
-			return false;
-		if (quantidade == null) {
-			if (other.quantidade != null)
-				return false;
-		} else if (!quantidade.equals(other.quantidade))
-			return false;
-		return true;
-	}
 }
